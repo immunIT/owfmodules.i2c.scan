@@ -30,7 +30,7 @@ class Scan(AModule):
         i2c_interface.configure(baudrate=i2c_baudrate)
 
         slave_devices = i2c_interface.scan()
-        self.logger.handle("Found {} addresses:".format(len(slave_devices)), self.logger.RESULT)
+        self.logger.handle("Found {} slave device(s):".format(len(slave_devices)), self.logger.RESULT)
         for device_addr in slave_devices:
             self.logger.handle("    -> {} ({})".format(hex(device_addr), device_addr), self.logger.DEFAULT)
         return slave_devices
