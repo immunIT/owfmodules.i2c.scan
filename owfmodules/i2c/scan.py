@@ -15,7 +15,7 @@ class Scan(AModule):
             {"Name": "detect_octowire", "Value": "", "Required": True, "Type": "bool",
              "Description": "Detect and connect octowire hardware", "Default": True},
             {"Name": "i2c_bus", "Value": "", "Required": True, "Type": "int",
-             "Description": "The octowire SPI device (0=SPI0 or 1=SPI1)", "Default": 0},
+             "Description": "The octowire I2C device (0=I2C0 or 1=I2C1)", "Default": 0},
             {"Name": "i2c_baudrate", "Value": "", "Required": True, "Type": "int",
              "Description": "set I2C baudrate in Hz (100000=100kHz)\n"
                             "Supported values: 100kHz or 400kHz", "Default": 400000},
