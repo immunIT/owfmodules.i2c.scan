@@ -12,8 +12,6 @@ class Scan(AModule):
             'author': 'Jordan Ovrè <ghecko78@gmail.com> / Paul Duncan <eresse@dooba.io>'
         })
         self.options = [
-            {"Name": "detect_octowire", "Value": "", "Required": True, "Type": "bool",
-             "Description": "Detect and connect octowire hardware", "Default": True},
             {"Name": "i2c_bus", "Value": "", "Required": True, "Type": "int",
              "Description": "The octowire I2C device (0=I2C0 or 1=I2C1)", "Default": 0},
             {"Name": "i2c_baudrate", "Value": "", "Required": True, "Type": "int",
@@ -41,7 +39,8 @@ class Scan(AModule):
         Print/return the I2C slave addresses.
         :return: Nothing or bytes, depending of the 'return_value' parameter.
         """
-        # Detect and connect to the octowire hardware. Set the self.owf_serial variable if found.
+        # If detect_octowire is True then Detect and connect to the Octowire hardware. Else, connect to the Octowire
+        # using the parameters that were configured. It sets the self.owf_serial variable if the hardware is found.
         self.connect()
         if not self.owf_serial:
             return None
