@@ -1,3 +1,11 @@
+# -*- coding:utf-8 -*-
+
+# Octowire Framework
+# Copyright (c) Jordan Ovrè / Paul Duncan
+# License: GPLv3
+# Paul Duncan / Eresse <eresse@dooba.io>
+# Jordan Ovrè / Ghecko <ghecko78@gmail.com
+
 from octowire_framework.module.AModule import AModule
 from octowire.i2c import I2C
 
