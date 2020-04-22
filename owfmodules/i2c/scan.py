@@ -19,17 +19,18 @@ class Scan(AModule):
             'description': 'Scan for I2C slave devices',
             'author': 'Jordan Ovrè <ghecko78@gmail.com> / Paul Duncan <eresse@dooba.io>'
         })
-        self.options = [
-            {"Name": "i2c_bus", "Value": "", "Required": True, "Type": "int",
-             "Description": "The octowire I2C device (0=I2C0 or 1=I2C1)", "Default": 0},
-            {"Name": "i2c_baudrate", "Value": "", "Required": True, "Type": "int",
-             "Description": "set I2C baudrate in Hz (100000=100kHz)\n"
-                            "Supported values: 100kHz or 400kHz", "Default": 400000},
-        ]
+        self.options = {
+            "i2c_bus": {"Name": "i2c_bus", "Value": "", "Required": True, "Type": "int",
+                        "Description": "The octowire I2C device (0=I2C0 or 1=I2C1)", "Default": 0},
+            "i2c_baudrate": {"Name": "i2c_baudrate", "Value": "", "Required": True, "Type": "int",
+                             "Description": "set I2C baudrate in Hz (100000=100kHz)\n"
+                                            "Supported values: 100kHz or 400kHz",
+                             "Default": 400000},
+        }
 
     def scan(self):
-        bus_id = self.get_option_value("i2c_bus")
-        i2c_baudrate = self.get_option_value("i2c_baudrate")
+        bus_id = self.options["i2c_bus"]["Value"]
+        i2c_baudrate = self.options["i2c_baudrate"]["Value"]
 
         # Set and configure I2C interface
         i2c_interface = I2C(serial_instance=self.owf_serial, bus_id=bus_id)
