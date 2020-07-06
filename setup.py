@@ -10,7 +10,7 @@ __license__ = "Apache 2.0"
 __version__ = "1.0.0"
 __contact__ = "Jordan Ovrè / Ghecko <jovre@immunit.ch>, Paul Duncan / Eresse <pduncan@immunit.ch>"
 
-description = 'Octowire Framework scan I2C slave devices'
+description = 'Scan the I2C bus and detect slave devices'
 name = 'owfmodules.i2c.scan'
 
 setup(

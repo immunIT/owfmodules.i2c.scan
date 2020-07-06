@@ -1,3 +1,3 @@
 # owfmodules.i2c.scan
 
-Scan for I2C flash device
+Scan the I2C bus and detect slave devices.

@@ -16,14 +16,14 @@ class Scan(AModule):
         self.meta.update({
             'name': 'I2C scan',
             'version': '1.0.0',
-            'description': 'Scan for I2C slave devices',
+            'description': 'Scan the I2C bus and detect slave devices',
             'author': 'Jordan Ovrè / Ghecko <jovre@immunit.ch>, Paul Duncan / Eresse <pduncan@immunit.ch>'
         })
         self.options = {
             "i2c_bus": {"Name": "i2c_bus", "Value": "", "Required": True, "Type": "int",
-                        "Description": "The octowire I2C device (0=I2C0 or 1=I2C1)", "Default": 0},
+                        "Description": "I2C bus (0=I2C0 or 1=I2C1)", "Default": 0},
             "i2c_baudrate": {"Name": "i2c_baudrate", "Value": "", "Required": True, "Type": "int",
-                             "Description": "set I2C baudrate in Hz (100000=100kHz)\n"
+                             "Description": "I2C frequency in Hz (100000=100kHz)\n"
                                             "Supported values: 100kHz or 400kHz",
                              "Default": 400000},
         }
@@ -32,7 +32,7 @@ class Scan(AModule):
         bus_id = self.options["i2c_bus"]["Value"]
         i2c_baudrate = self.options["i2c_baudrate"]["Value"]
 
-        # Set and configure I2C interface
+        # Setup and configure I2C interface
         i2c_interface = I2C(serial_instance=self.owf_serial, bus_id=bus_id)
         i2c_interface.configure(baudrate=i2c_baudrate)
 
@@ -48,8 +48,8 @@ class Scan(AModule):
         Print/return the I2C slave addresses.
         :return: Nothing or bytes, depending of the 'return_value' parameter.
         """
-        # If detect_octowire is True then Detect and connect to the Octowire hardware. Else, connect to the Octowire
-        # using the parameters that were configured. It sets the self.owf_serial variable if the hardware is found.
+        # If detect_octowire is True then detect and connect to the Octowire hardware. Else, connect to the Octowire
+        # using the parameters that were configured. This sets the self.owf_serial variable if the hardware is found.
         self.connect()
         if not self.owf_serial:
             return None
