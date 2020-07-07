@@ -15,7 +15,7 @@ class Scan(AModule):
         super(Scan, self).__init__(owf_config)
         self.meta.update({
             'name': 'I2C scan',
-            'version': '1.0.0',
+            'version': '1.0.1',
             'description': 'Scan the I2C bus and detect slave devices',
             'author': 'Jordan Ovrè / Ghecko <jovre@immunit.ch>, Paul Duncan / Eresse <pduncan@immunit.ch>'
         })
